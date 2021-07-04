@@ -11,12 +11,12 @@ $('.post').find('.interation').find('.edit').on('click', function(event) {
 });
 
 $('#modal-save').on('click', function() {
-    $.ajax()  ({
+    $.ajax({
         method: 'POST',
         url: url,
         data: { body: $('#post-body').val(), postId: postId, _token: token}
         
-    } )
+    })
     .done(function (msg) {
         (postBodyElement).text(msg['new-body']);
         $('#edit-modal').modal(hide);
