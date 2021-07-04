@@ -12,4 +12,8 @@ class User extends Model implements Authenticatable
 {
     use HasFactory;
     use \Illuminate\Auth\Authenticatable;
+    public function posts()
+    {
+        return $this->hasMany('App\Models\Post');
+    }
 }
