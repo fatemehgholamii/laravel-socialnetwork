@@ -24,8 +24,8 @@
                     Posted by {{ $post->user->first_name }} on {{ $post->created_at }}
                 </div>
                 <div class="interation">
-                    <a href="#">Like</a> |
-                    <a href="#">Dislike</a> 
+                    <a href="#" class="like">{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ? 'You Like this post' : 'Like' : 'Like'  }}</a> |
+                    <a href="#" class="like">{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ? 'You do\'t Like this post' : 'Dislike' : 'Dislike'  }}</a> 
                     @if (Auth::user() == $post->user)
                     |
                     <a href="#" class="edit">Edit</a> |
@@ -53,7 +53,7 @@
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-def" data-bs-dismiss="modal">Close</button>
               <button type="button" class="btn btn-primary" id= "modal-save">Save changes</button>
             </div>
           </div>
@@ -61,6 +61,7 @@
       </div>
       <script>
           var token = '{{ Session::token() }}';
-          var url = '{{ route('edit') }}';
+          var urlEdit = '{{ route('edit') }}';
+          var urlLike = '{{ route('like') }}';
       </script>
    @endsection

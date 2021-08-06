@@ -40,6 +40,19 @@ Route::group(['middleware' => ['web']], function () {
         'uses' => 'UserController@getLogout',
         'as' => 'logout'
     ]);
+    Route::get('/account', [
+        'uses' => 'UserController@getAccount',
+        'as' => 'account'
+    ]);
+    Route::post('/updateaccount', [
+        'uses' => 'UserController@postSaveAccount',
+        'as' => 'account.save'
+    ]);
+
+    Route::get('/userimage/{filename}', [
+        'uses' => 'UserController@getUserImage',
+        'as' => 'account.image'
+    ]);
 
     Route::get('/dashboard',[  
         'uses' => 'PostController@getDashboard',
@@ -57,7 +70,12 @@ Route::group(['middleware' => ['web']], function () {
         'middleware' => 'auth'
     ]);
     Route::post('/edit', [
-        'usue' => 'PostController@postEditPost',
+        'uses' => 'PostController@postEditPost',
         'as' => 'edit'
+    ]);
+
+    Route::post('/like', [
+        'uses' => 'PostController@postLikePost',
+        'as' => 'like'
     ]);
 });
