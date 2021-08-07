@@ -60,7 +60,7 @@ class UserController extends Controller
     public function postSaveAccount(Request $request)
     {
         $this->validate($request, [
-            'first_name' => 'required|max:120'
+            'first_name' => 'required|max:10240'
         ]);
         $user =Auth::user();
         $user->first_name = $request['first_name'];

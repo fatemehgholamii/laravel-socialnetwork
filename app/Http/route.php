@@ -78,4 +78,11 @@ Route::group(['middleware' => ['web']], function () {
         'uses' => 'PostController@postLikePost',
         'as' => 'like'
     ]);
+
+    
+Route::post('/addfile', [
+    'uses' => 'PostController@postAddFilePost',
+    'as' => 'addfile'
+    ]);
+
 });

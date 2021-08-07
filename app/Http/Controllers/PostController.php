@@ -6,6 +6,7 @@ use App\Models\Post;
 use Illuminate\Http\Request ;
 use Illuminate\Support\Facades\Auth;
 
+   
 class PostController extends Controller
 {
     public function getDashboard()
@@ -56,10 +57,10 @@ public function postCreatePost(Request $request)
 public function postLikePost(Request $request)
 {
     $post_id = $request['postId'];
-    $is_Like = $request['isLike'] === 'true';
+    $is_like = $request['isLike'] === 'true';
     $update = false;
     $post = Post::find($post_id);
-    if(!$post) {
+    if (!$post) {
         return null;
     }
     $user = Auth::user();
@@ -67,15 +68,15 @@ public function postLikePost(Request $request)
     if ($like) {
         $already_like = $like->like;
         $update = true;
-        if ($already_like == $is_Like) {
+        if ($already_like == $is_like) {
             $like->delete();
             return null;
         }
 
     }else{
-         $like = new Like();
+       $like = new Like();
     }
-    $like->like = $is_Like;
+    $like->like = $is_like;
     $like->user_id = $user->id;
     $like->post_id = $post->id;
     if ($update) {
@@ -85,4 +86,82 @@ public function postLikePost(Request $request)
     }
     return null;
 }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+
+
 }
+

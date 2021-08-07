@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.master') 
 
 @section('title')
     welcome!
@@ -6,7 +6,8 @@
 
 @section('content')
 @include('includes.message-block')
-    <div class="row">
+<div class="container">
+   <div class="row justify-content-center">
         <div class="col-md-6">
             <h3>Sing Up</h3>
             <form action="{{ route('signup') }}" method="post">
@@ -48,6 +49,7 @@
              <button type="submit" class="btn btn-primary"> Submit </button>
              <input type="hidden" name="_token" value="{{ Session::token() }}">
         </form>
-     </div>
+     </div> 
+   </div>
 </div>
 @endsection

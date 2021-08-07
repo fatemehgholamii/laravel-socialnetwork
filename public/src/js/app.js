@@ -34,7 +34,7 @@ $('.like').on('clike', function(event) {
        data:{isLike: isLike, postId: postId, _token: token}
    })
    .done(function() {
-      event.target.innerText =isLike ? event.target.innerText == 'Like' ? 'You Like this post' : 'Like' : event.target.innerText == 'Dislike' ? 'You don\'t Like this post': 'Dislike' ;
+      event.target.innerText = isLike ? event.target.innerText == 'Like' ? 'You Like this post' : 'Like' : event.target.innerText == 'Dislike' ? 'You don\'t Like this post': 'Dislike';
    if (isLike) {
        event.target.nextElementSibling.innerText = 'Dislike';
    }else{
